@@ -1,6 +1,9 @@
 export type Event = {
   title: string;
-  start: string | Date;
-  end: string | Date;
-  location: string;
+  url: string;
+  startRecur: string | Date;
+  endRecur: string | Date;
+  daysOfWeek: Array<string>;
+  startTime: string;
+  endTime: string;
 };
