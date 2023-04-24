@@ -32,8 +32,7 @@
     "test": "playwright test",
     "test:headed": "playwright test --headed",
     "release": "changeset publish",
-    "update": "pnpm update -i -L -r",
-    "start": "web-dev-server --node-resolve --open --watch"
+    "update": "pnpm update -i -L -r"
   },
   "devDependencies": {
     "@changesets/changelog-git": "^0.1.14",
@@ -43,6 +42,7 @@
     "@playwright/test": "^1.32.1",
     "@typescript-eslint/eslint-plugin": "^5.57.0",
     "@typescript-eslint/parser": "^5.57.0",
+    "@web/dev-server": "^0.2.1",
     "cross-env": "^7.0.3",
     "esbuild": "^0.17.14",
     "eslint": "^8.37.0",
