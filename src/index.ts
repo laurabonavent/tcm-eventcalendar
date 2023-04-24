@@ -36,8 +36,9 @@ const getEvents = (): Event[] => {
   //const scriptsArray = Object.entries(scripts);
   const events = [...scripts].map((script) => {
     const event: Event = JSON.parse(script.textContent!);
-    event.start = new Date(event.start);
-    event.end = new Date(event.end);
+    event.startRecur = new Date(event.startRecur);
+    event.endRecur = new Date(event.endRecur);
+    console.log('maj ok');
 
     return event;
   });
