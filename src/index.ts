@@ -39,6 +39,8 @@ const getEvents = (): Event[] => {
     event.start = new Date(event.start);
     event.end = new Date(event.end);
 
+    console.log('Hello');
+
     return event;
   });
 
