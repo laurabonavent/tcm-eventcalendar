@@ -67,7 +67,6 @@ const getEvents = (): Event[] => {
     const event: Event = JSON.parse(script.textContent!);
     // to add color background to event
     event.display = 'block';
-    console.log(event);
 
     // to deal with the fact they don't all have exception date
     /*if (event.exdate[0].startsWith('--')) {
