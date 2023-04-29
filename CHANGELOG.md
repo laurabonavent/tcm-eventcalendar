@@ -1,5 +1,11 @@
 # @finsweet/developer-starter
 
+## 0.3.0
+
+### Minor Changes
+
+- 2ae0fca: tentative 3
+
 ## 0.2.0
 
 ### Minor Changes
