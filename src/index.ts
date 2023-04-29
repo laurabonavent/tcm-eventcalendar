@@ -72,7 +72,6 @@ const getEvents = (): Event[] => {
     /*if (event.exdate[0].startsWith('--')) {
       event.exdate[0] = '2020-01-01T00:00:00';
     }*/
-    console.log('test');
     // get all the collection dates in date format
     const startDate = new Date(event.startday);
     const endDate = new Date(event.endday);
@@ -135,7 +134,6 @@ const getEvents = (): Event[] => {
         event.rrule.byweekday = weekDaysArray;
       }
     }
-    console.log(event.rrule.freq);
 
     //EXCEPTION DATES
     const exDateArray = event.getexdate;
