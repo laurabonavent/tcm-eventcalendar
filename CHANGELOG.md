@@ -1,5 +1,11 @@
 # @finsweet/developer-starter
 
+## 1.2.0
+
+### Minor Changes
+
+- 6554e1b: change set on for the latest version
+
 ## 0.3.0
 
 ### Minor Changes
