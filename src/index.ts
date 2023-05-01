@@ -20,8 +20,10 @@ window.Webflow.push(() => {
   console.log({ events });
 
   const calendar = new Calendar(calendarElement, {
-    plugins: [dayGridPlugin, /*timeGridPlugin,*/ rrulePlugin],
+    plugins: [dayGridPlugin, timeGridPlugin, rrulePlugin],
     initialView: 'dayGridMonth',
+    fixedWeekCount: false,
+    showNonCurrentDates: false,
     headerToolbar: {
       left: 'prev,next today',
       center: 'title',
