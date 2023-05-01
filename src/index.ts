@@ -65,8 +65,13 @@ const getEvents = (): Event[] => {
 
   const events = [...scripts].map((script) => {
     const event: Event = JSON.parse(script.textContent!);
-    // to add color background to event
+    //add background to event
     event.display = 'block';
+
+    //apostrophe display
+    console.log(event.title);
+    event.title = event.title.replace(/&#39;/g, "'");
+    console.log(event.title);
 
     // to deal with the fact they don't all have exception date
     /*if (event.exdate[0].startsWith('--')) {
