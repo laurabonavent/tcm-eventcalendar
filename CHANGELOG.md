@@ -1,5 +1,11 @@
 # @finsweet/developer-starter
 
+## 1.5.0
+
+### Minor Changes
+
+- 2e8e461: correcting the view
+
 ## 1.4.0
 
 ### Minor Changes
