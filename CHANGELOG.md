@@ -1,5 +1,11 @@
 # @finsweet/developer-starter
 
+## 1.4.0
+
+### Minor Changes
+
+- 0cb5bbb: view editing
+
 ## 1.3.0
 
 ### Minor Changes
