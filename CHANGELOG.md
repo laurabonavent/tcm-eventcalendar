@@ -1,5 +1,11 @@
 # @finsweet/developer-starter
 
+## 1.6.0
+
+### Minor Changes
+
+- 1b693df: slot min time
+
 ## 1.5.0
 
 ### Minor Changes
