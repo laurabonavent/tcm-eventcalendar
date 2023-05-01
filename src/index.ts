@@ -20,7 +20,7 @@ window.Webflow.push(() => {
   console.log({ events });
 
   const calendar = new Calendar(calendarElement, {
-    plugins: [dayGridPlugin, timeGridPlugin, listPlugin, rrulePlugin],
+    plugins: [dayGridPlugin, /*timeGridPlugin,*/ rrulePlugin],
     initialView: 'dayGridMonth',
     headerToolbar: {
       left: 'prev,next today',
@@ -69,14 +69,8 @@ const getEvents = (): Event[] => {
     event.display = 'block';
 
     //apostrophe display
-    console.log(event.title);
     event.title = event.title.replace(/&#39;/g, "'");
-    console.log(event.title);
 
-    // to deal with the fact they don't all have exception date
-    /*if (event.exdate[0].startsWith('--')) {
-      event.exdate[0] = '2020-01-01T00:00:00';
-    }*/
     // get all the collection dates in date format
     const startDate = new Date(event.startday);
     const endDate = new Date(event.endday);
