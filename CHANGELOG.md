@@ -1,5 +1,11 @@
 # @finsweet/developer-starter
 
+## 1.7.0
+
+### Minor Changes
+
+- ecef409: set some rules if no data
+
 ## 1.6.0
 
 ### Minor Changes
