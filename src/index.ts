@@ -25,10 +25,11 @@ window.Webflow.push(() => {
     fixedWeekCount: false,
     showNonCurrentDates: false,
     slotMinTime: '07:00:00',
+    height: 'auto',
     headerToolbar: {
       left: 'prev,next today',
       center: 'title',
-      right: 'dayGridMonth,timeGridWeek,listPlugin',
+      right: 'dayGridMonth,timeGridWeek',
     },
 
     events,
@@ -135,6 +136,18 @@ const getEvents = (): Event[] => {
       for (let i = 0; i < weekDaysArray.length; i++) {
         event.rrule.byweekday = weekDaysArray;
       }
+    } else {
+      event.rrule.byweekday = ['su,mo,tu,we,th,fr,sa'];
+    }
+
+    // FREQUENCY
+    if (event.rrule.freq === '') {
+      event.rrule.freq = 'daily';
+    }
+
+    // INTERVAL
+    if (event.rrule.interval === null) {
+      event.rrule.interval = 1;
     }
 
     //EXCEPTION DATES
