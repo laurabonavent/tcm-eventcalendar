@@ -1,5 +1,11 @@
 # @finsweet/developer-starter
 
+## 1.7.2
+
+### Patch Changes
+
+- 7c3ee1c: color border
+
 ## 1.7.1
 
 ### Patch Changes
