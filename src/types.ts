@@ -23,4 +23,5 @@ export type Event = {
   repertoire: string;
   getbyweekday: string;
   textColor: string;
+  borderColor: string;
 };

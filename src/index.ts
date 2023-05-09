@@ -194,12 +194,19 @@ const getEvents = (): Event[] => {
     //BACKGROUND COLOR :
     if (event.repertoire === 'Spectacles') {
       event.backgroundColor = '#fffc80';
+      event.borderColor = '#fffc80';
     } else if (event.repertoire === 'Évènements') {
       event.backgroundColor = '#dcfdff';
+      event.borderColor = '#dcfdff';
     } else if (event.repertoire === 'Jeunesse') {
       event.backgroundColor = '#45d8b5';
+      event.borderColor = '#45d8b5';
     } else if (event.repertoire === 'Exposition') {
       event.backgroundColor = '#ffd9ab';
+      event.borderColor = '#ffd9ab';
+    } else if (event.repertoire === 'Ateliers') {
+      event.backgroundColor = '#ffe9fb';
+      event.borderColor = '#ffe9fb';
     }
 
     return event;
