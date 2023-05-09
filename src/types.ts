@@ -22,4 +22,5 @@ export type Event = {
   endday: string;
   repertoire: string;
   getbyweekday: string;
+  textColor: string;
 };

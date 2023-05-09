@@ -75,6 +75,9 @@ const getEvents = (): Event[] => {
     //apostrophe display
     event.title = event.title.replace(/&#39;/g, "'");
 
+    //black text color
+    event.textColor = 'black';
+
     // get all the collection dates in date format
     const startDate = new Date(event.startday);
     const endDate = new Date(event.endday);
@@ -190,13 +193,13 @@ const getEvents = (): Event[] => {
 
     //BACKGROUND COLOR :
     if (event.repertoire === 'Spectacles') {
-      event.backgroundColor = '#c33149';
+      event.backgroundColor = '#fffc80';
     } else if (event.repertoire === 'Évènements') {
-      event.backgroundColor = '#333333';
+      event.backgroundColor = '#dcfdff';
     } else if (event.repertoire === 'Jeunesse') {
-      event.backgroundColor = '#a1a1a1';
+      event.backgroundColor = '#45d8b5';
     } else if (event.repertoire === 'Exposition') {
-      event.backgroundColor = '#76DFBA';
+      event.backgroundColor = '#ffd9ab';
     }
 
     return event;
