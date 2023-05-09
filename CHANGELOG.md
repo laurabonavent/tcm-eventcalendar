@@ -1,5 +1,11 @@
 # @finsweet/developer-starter
 
+## 1.7.1
+
+### Patch Changes
+
+- 0010421: change color of the events
+
 ## 1.7.0
 
 ### Minor Changes
