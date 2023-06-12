@@ -1,13 +1,14 @@
 import 'tippy.js/themes/light.css';
 import 'tippy.js/themes/translucent.css';
 import 'tippy.js/dist/svg-arrow.css';
+import 'tippy.js/animations/scale.css';
 
 import { Calendar } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import listPlugin from '@fullcalendar/list';
 import rrulePlugin from '@fullcalendar/rrule';
 import timeGridPlugin from '@fullcalendar/timegrid';
-import tippy from 'tippy.js';
+import tippy, { roundArrow } from 'tippy.js';
 
 import type { Event } from './types';
 
@@ -23,8 +24,9 @@ window.Webflow.push(() => {
     plugins: [dayGridPlugin, timeGridPlugin, rrulePlugin],
     initialView: 'dayGridMonth',
     fixedWeekCount: false,
-    showNonCurrentDates: false,
-    slotMinTime: '07:00:00',
+    showNonCurrentDates: true,
+    slotMinTime: '08:00:00',
+
     height: 'auto',
     headerToolbar: {
       left: 'prev,next today',
@@ -34,29 +36,41 @@ window.Webflow.push(() => {
 
     events,
 
-    /*events: [
-      {
-        title: 'TEST #2 my recurring event',
-        backgroundColor: 'lime',
-        rrule: {
-          freq: 'weekly',
-          interval: 1,
-          byweekday: ['mo', 'fr'],
-          dtstart: '2023-04-11T10:30:00',
-          until: '2024-06-01',
-        },
-        duration: '01:00',
-        exdate: ['2023-04-28T10:30:00', '2023-05-26T10:30:00'],
-      },
-    ],*/
+    eventTimeFormat: {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false,
+      meridiem: false,
+    },
+
+    slotLabelFormat: {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false,
+      meridiem: false,
+    },
 
     eventMouseEnter(data) {
-      console.log(data.event.extendedProps);
+      console.log(data.event);
       tippy(data.el, {
-        content: data.event.title + ' // ' + data.event.extendedProps.localisation,
+        content:
+          '<div style="padding:15px; border-left:2px solid' +
+          data.event.backgroundColor +
+          '"><img src="' +
+          data.event.extendedProps.image +
+          '"></img><p style="color:black; font-family:Red Hat Display, sans-serif; font-size:1.25rem; line-height:125%; margin:5px 0px;">' +
+          data.event.title +
+          '</p> <div> <img style="margin-right:5px; width:14px;"src="https://uploads-ssl.webflow.com/63e60ae0d172c02222cc9e79/641e2de18be4f26e9913a9e2_clock%201.svg"></img>' +
+          data.event.extendedProps.time +
+          '</div> <div> <img style="margin-right:5px; width:14px;" src="https://uploads-ssl.webflow.com/63e60ae0d172c02222cc9e79/64428f103066897c24b1e742_location%20on-sharp-24px.svg"></img>' +
+          data.event.extendedProps.localisation +
+          '</div></div>',
+        //content: data.event.title + ' // ' + data.event.extendedProps.localisation,
         placement: 'bottom',
-        arrow: true,
+        arrow: roundArrow,
         theme: 'light',
+        allowHTML: true,
+        animation: 'scale',
       });
     },
   });

@@ -11,6 +11,8 @@ export type Event = {
   };
   extendedProps: {
     localisation: string;
+    time: string;
+    image: string;
   };
   localisation: string;
   duration: string;
