@@ -1,5 +1,11 @@
 # @finsweet/developer-starter
 
+## 1.8.0
+
+### Minor Changes
+
+- 2d65e7a: new version of calendar
+
 ## 1.7.2
 
 ### Patch Changes
