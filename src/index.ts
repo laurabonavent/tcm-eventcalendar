@@ -21,17 +21,58 @@ window.Webflow.push(() => {
   console.log({ events });
 
   const calendar = new Calendar(calendarElement, {
-    plugins: [dayGridPlugin, timeGridPlugin, rrulePlugin],
+    plugins: [dayGridPlugin, timeGridPlugin, rrulePlugin, listPlugin],
+
     initialView: 'dayGridMonth',
     fixedWeekCount: false,
     showNonCurrentDates: true,
     slotMinTime: '08:00:00',
-
     height: 'auto',
     headerToolbar: {
-      left: 'prev,next today',
+      left: 'prev,next',
       center: 'title',
-      right: 'dayGridMonth,timeGridWeek',
+      right: 'dayGridMonth,listMonth,timeGridWeek',
+    },
+
+    buttonText: {
+      month: 'Mois',
+      list: 'Liste',
+      week: 'Semaine',
+    },
+
+    /*views: {
+      dayGridMonth: {
+        //type: 'dayGridMonth',
+        //initialView: 'dayGridMonth',
+        fixedWeekCount: false,
+        showNonCurrentDates: true,
+        slotMinTime: '08:00:00',
+
+        height: 'auto',
+        headerToolbar: {
+          left: 'prev,next',
+          center: 'title',
+          right: 'dayGridMonth,timeGridWeek',
+        },
+      },
+      listMonth: {
+        //type: 'listMonth',
+        header: {
+          left: 'prev,next',
+          center: 'title',
+        },
+      },
+    },*/
+
+    windowResize: function () {
+      console.log(window.innerWidth);
+      //alert('The calendar has adjusted to a window resize. Current view: ' + arg.view.type);
+      if (window.innerWidth > 1000) {
+        calendar.changeView('dayGridMonth');
+      } else if (window.innerWidth < 1000) {
+        calendar.changeView('listMonth');
+        console.log(document.querySelector<HTMLDivElement>('fc-dayGridMonth-button'));
+      }
     },
 
     events,
