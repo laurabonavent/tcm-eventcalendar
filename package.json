@@ -60,6 +60,7 @@
     "@fullcalendar/rrule": "^6.1.6",
     "@fullcalendar/timegrid": "^6.1.5",
     "install": "^0.13.0",
+    "request": "^2.88.2",
     "tippy.js": "^6.3.7"
   }
 }

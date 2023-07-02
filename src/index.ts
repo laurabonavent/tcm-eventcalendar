@@ -40,30 +40,6 @@ window.Webflow.push(() => {
       week: 'Semaine',
     },
 
-    /*views: {
-      dayGridMonth: {
-        //type: 'dayGridMonth',
-        //initialView: 'dayGridMonth',
-        fixedWeekCount: false,
-        showNonCurrentDates: true,
-        slotMinTime: '08:00:00',
-
-        height: 'auto',
-        headerToolbar: {
-          left: 'prev,next',
-          center: 'title',
-          right: 'dayGridMonth,timeGridWeek',
-        },
-      },
-      listMonth: {
-        //type: 'listMonth',
-        header: {
-          left: 'prev,next',
-          center: 'title',
-        },
-      },
-    },*/
-
     windowResize: function () {
       console.log(window.innerWidth);
       //alert('The calendar has adjusted to a window resize. Current view: ' + arg.view.type);
@@ -71,7 +47,6 @@ window.Webflow.push(() => {
         calendar.changeView('dayGridMonth');
       } else if (window.innerWidth < 1000) {
         calendar.changeView('listMonth');
-        console.log(document.querySelector<HTMLDivElement>('fc-dayGridMonth-button'));
       }
     },
 
@@ -92,7 +67,6 @@ window.Webflow.push(() => {
     },
 
     eventMouseEnter(data) {
-      console.log(data.event);
       tippy(data.el, {
         content:
           '<div style="padding:15px; border-left:2px solid' +
@@ -124,6 +98,9 @@ const getEvents = (): Event[] => {
 
   const events = [...scripts].map((script) => {
     const event: Event = JSON.parse(script.textContent!);
+    console.log(event);
+
+    /*
     //add background to event
     event.display = 'block';
 
@@ -263,6 +240,7 @@ const getEvents = (): Event[] => {
       event.backgroundColor = '#ffe9fb';
       event.borderColor = '#ffe9fb';
     }
+    */
 
     return event;
   });
