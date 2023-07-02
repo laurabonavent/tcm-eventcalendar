@@ -1,5 +1,11 @@
 # @finsweet/developer-starter
 
+## 1.8.1
+
+### Patch Changes
+
+- aa71d2f: responsive
+
 ## 1.8.0
 
 ### Minor Changes
