@@ -1,5 +1,11 @@
 # @finsweet/developer-starter
 
+## 1.8.2
+
+### Patch Changes
+
+- 959b4d5: hide times
+
 ## 1.8.1
 
 ### Patch Changes
