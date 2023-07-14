@@ -18,10 +18,9 @@ window.Webflow.push(() => {
   if (!calendarElement) return;
 
   const events = getEvents();
-  console.log({ events });
 
   const calendar = new Calendar(calendarElement, {
-    plugins: [dayGridPlugin, timeGridPlugin, rrulePlugin, listPlugin],
+    plugins: [dayGridPlugin, rrulePlugin, listPlugin],
 
     initialView: 'dayGridMonth',
     fixedWeekCount: false,
@@ -31,13 +30,12 @@ window.Webflow.push(() => {
     headerToolbar: {
       left: 'prev,next',
       center: 'title',
-      right: 'dayGridMonth,listMonth,timeGridWeek',
+      right: 'dayGridMonth,listMonth',
     },
 
     buttonText: {
       month: 'Mois',
       list: 'Liste',
-      week: 'Semaine',
     },
 
     windowResize: function () {
@@ -98,11 +96,14 @@ const getEvents = (): Event[] => {
 
   const events = [...scripts].map((script) => {
     const event: Event = JSON.parse(script.textContent!);
-    console.log(event);
 
-    /*
     //add background to event
     event.display = 'block';
+
+    // hide time (+CSS)
+    event.startTime = '10:00:00';
+    event.allDay = false;
+    //event.displayEventTime = false;
 
     //apostrophe display
     event.title = event.title.replace(/&#39;/g, "'");
@@ -137,7 +138,7 @@ const getEvents = (): Event[] => {
     const startYear = startDate.getFullYear();
 
     //assign to dtstart
-    event.rrule.dtstart = startYear + '-' + startMonthOk + '-' + startDayOk + 'T' + event.startTime;
+    event.rrule.dtstart = startYear + '-' + startMonthOk + '-' + startDayOk;
 
     // END DATE
     //day
@@ -233,14 +234,13 @@ const getEvents = (): Event[] => {
     } else if (event.repertoire === 'Jeunesse') {
       event.backgroundColor = '#45d8b5';
       event.borderColor = '#45d8b5';
-    } else if (event.repertoire === 'Exposition') {
+    } else if (event.repertoire === 'Expositions') {
       event.backgroundColor = '#ffd9ab';
       event.borderColor = '#ffd9ab';
     } else if (event.repertoire === 'Ateliers') {
       event.backgroundColor = '#ffe9fb';
       event.borderColor = '#ffe9fb';
     }
-    */
 
     return event;
   });

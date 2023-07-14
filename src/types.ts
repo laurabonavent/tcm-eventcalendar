@@ -26,4 +26,6 @@ export type Event = {
   getbyweekday: string;
   textColor: string;
   borderColor: string;
+  displayEventTime: boolean;
+  allDay: boolean;
 };
