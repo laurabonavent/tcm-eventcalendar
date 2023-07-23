@@ -96,6 +96,7 @@ const getEvents = (): Event[] => {
 
   const events = [...scripts].map((script) => {
     const event: Event = JSON.parse(script.textContent!);
+    console.log(event);
 
     //add background to event
     event.display = 'block';
@@ -165,15 +166,23 @@ const getEvents = (): Event[] => {
     event.rrule.until = endYear + '-' + endMonthOk + '-' + endDayOk;
 
     //WEEKDAYS
-    const weekDays = event.getbyweekday;
-    const weekDaysArray = weekDays.split(',');
-
-    if (weekDaysArray.length > 0) {
-      for (let i = 0; i < weekDaysArray.length; i++) {
-        event.rrule.byweekday = weekDaysArray;
-      }
-    } else {
+    if (event.getbyweekday === '') {
+      event.rrule.byweekday = ['su', 'mo', 'tu', 'we', 'th', 'fr', 'sa'];
+    } else if (
+      event.getbyweekday.includes('su') === false &&
+      event.getbyweekday.includes('mo') === false &&
+      event.getbyweekday.includes('tu') === false &&
+      event.getbyweekday.includes('we') === false &&
+      event.getbyweekday.includes('th') === false &&
+      event.getbyweekday.includes('fr') === false &&
+      event.getbyweekday.includes('sa') === false
+    ) {
       event.rrule.byweekday = ['su,mo,tu,we,th,fr,sa'];
+    } else if (event.getbyweekday !== '') {
+      const weekDays = event.getbyweekday;
+      const weekDaysArray = weekDays.split(',');
+
+      event.rrule.byweekday = weekDaysArray;
     }
 
     // FREQUENCY
