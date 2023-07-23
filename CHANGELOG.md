@@ -1,5 +1,11 @@
 # @finsweet/developer-starter
 
+## 1.9.0
+
+### Minor Changes
+
+- 50dd4e7: handle if no days
+
 ## 1.8.2
 
 ### Patch Changes
