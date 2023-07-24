@@ -39,7 +39,6 @@ window.Webflow.push(() => {
     },
 
     windowResize: function () {
-      console.log(window.innerWidth);
       //alert('The calendar has adjusted to a window resize. Current view: ' + arg.view.type);
       if (window.innerWidth > 1000) {
         calendar.changeView('dayGridMonth');
@@ -96,7 +95,6 @@ const getEvents = (): Event[] => {
 
   const events = [...scripts].map((script) => {
     const event: Event = JSON.parse(script.textContent!);
-    console.log(event);
 
     //add background to event
     event.display = 'block';
@@ -191,8 +189,11 @@ const getEvents = (): Event[] => {
     }
 
     // INTERVAL
-    if (event.rrule.interval === null) {
+    const intervalNumber = parseInt(event.getInterval);
+    if (Number.isNaN(intervalNumber)) {
       event.rrule.interval = 1;
+    } else {
+      event.rrule.interval = parseInt(event.getInterval);
     }
 
     //EXCEPTION DATES
@@ -224,8 +225,7 @@ const getEvents = (): Event[] => {
         //year
         const exYear = exDate.getFullYear();
 
-        const fullExDate = exYear + '-' + exMonthOk + '-' + exDayOk + 'T' + event.startTime;
-
+        const fullExDate = exYear + '-' + exMonthOk + '-' + exDayOk;
         //assign to ex date
         event.exdate.push(fullExDate);
       }

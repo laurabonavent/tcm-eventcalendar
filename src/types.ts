@@ -28,4 +28,5 @@ export type Event = {
   borderColor: string;
   displayEventTime: boolean;
   allDay: boolean;
+  getInterval: string;
 };
