@@ -1,5 +1,11 @@
 # @finsweet/developer-starter
 
+## 1.9.1
+
+### Patch Changes
+
+- eb51014: interval + exdate + frequence
+
 ## 1.9.0
 
 ### Minor Changes
