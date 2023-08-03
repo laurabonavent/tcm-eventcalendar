@@ -1,5 +1,11 @@
 # @finsweet/developer-starter
 
+## 1.9.2
+
+### Patch Changes
+
+- 0a92cfa: bg colors event temporary fix
+
 ## 1.9.1
 
 ### Patch Changes
