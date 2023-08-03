@@ -29,4 +29,10 @@ export type Event = {
   displayEventTime: boolean;
   allDay: boolean;
   getInterval: string;
+  id: string;
+};
+
+export type Categorie = {
+  name: string;
+  color: string;
 };

@@ -4,13 +4,15 @@ import 'tippy.js/dist/svg-arrow.css';
 import 'tippy.js/animations/scale.css';
 
 import { Calendar } from '@fullcalendar/core';
+import frLocale from '@fullcalendar/core/locales/fr';
+import allLocales from '@fullcalendar/core/locales-all';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import listPlugin from '@fullcalendar/list';
 import rrulePlugin from '@fullcalendar/rrule';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import tippy, { roundArrow } from 'tippy.js';
 
-import type { Event } from './types';
+import type { Categorie, Event } from './types';
 
 window.Webflow ||= [];
 window.Webflow.push(() => {
@@ -22,6 +24,7 @@ window.Webflow.push(() => {
   const calendar = new Calendar(calendarElement, {
     plugins: [dayGridPlugin, rrulePlugin, listPlugin],
 
+    locale: 'fr',
     initialView: 'dayGridMonth',
     fixedWeekCount: false,
     showNonCurrentDates: true,
@@ -86,6 +89,7 @@ window.Webflow.push(() => {
       });
     },
   });
+  calendar.setOption('locale', 'fr');
 
   calendar.render();
 });
@@ -93,9 +97,18 @@ window.Webflow.push(() => {
 const getEvents = (): Event[] => {
   const scripts = document.querySelectorAll<HTMLScriptElement>('[data-element="event-data"]');
 
+  const categoriesElement = document.querySelectorAll<HTMLScriptElement>(
+    '[data-element="categorie-data"]'
+  );
+
+  const categories = [...categoriesElement].map((script) => {
+    const categorie: Categorie = JSON.parse(script.textContent!);
+    return categorie;
+  });
+  const bgColorsArr = Object.values(categories);
+
   const events = [...scripts].map((script) => {
     const event: Event = JSON.parse(script.textContent!);
-
     //add background to event
     event.display = 'block';
 
@@ -234,21 +247,53 @@ const getEvents = (): Event[] => {
     }
 
     //BACKGROUND COLOR :
-    if (event.repertoire === 'Spectacles') {
-      event.backgroundColor = '#fffc80';
-      event.borderColor = '#fffc80';
-    } else if (event.repertoire === 'Évènements') {
-      event.backgroundColor = '#dcfdff';
-      event.borderColor = '#dcfdff';
-    } else if (event.repertoire === 'Jeunesse') {
-      event.backgroundColor = '#45d8b5';
-      event.borderColor = '#45d8b5';
-    } else if (event.repertoire === 'Expositions') {
-      event.backgroundColor = '#ffd9ab';
-      event.borderColor = '#ffd9ab';
-    } else if (event.repertoire === 'Ateliers') {
-      event.backgroundColor = '#ffe9fb';
-      event.borderColor = '#ffe9fb';
+    for (let i = 0; i < bgColorsArr.length; i++) {
+      if (event.repertoire === 'Spectacles') {
+        if (bgColorsArr[i].name.indexOf('Spectacles') === 0) {
+          event.backgroundColor = bgColorsArr[i].color;
+          event.borderColor = bgColorsArr[i].color;
+        }
+      } else if (event.repertoire === 'Jeunesse') {
+        if (bgColorsArr[i].name.indexOf('Jeunesse') === 0) {
+          event.backgroundColor = bgColorsArr[i].color;
+          event.borderColor = bgColorsArr[i].color;
+        }
+      } else if (event.repertoire === 'Adulte') {
+        if (bgColorsArr[i].name.indexOf('Adulte') === 0) {
+          event.backgroundColor = bgColorsArr[i].color;
+          event.borderColor = bgColorsArr[i].color;
+        }
+      } else if (event.repertoire === 'Gala') {
+        if (bgColorsArr[i].name.indexOf('Gala') === 0) {
+          event.backgroundColor = bgColorsArr[i].color;
+          event.borderColor = bgColorsArr[i].color;
+        }
+      } else if (event.repertoire === 'Inscription') {
+        if (bgColorsArr[i].name.indexOf('Inscription') === 0) {
+          event.backgroundColor = bgColorsArr[i].color;
+          event.borderColor = bgColorsArr[i].color;
+        }
+      } else if (event.repertoire === 'Cours') {
+        if (bgColorsArr[i].name.indexOf('Cours') === 0) {
+          event.backgroundColor = bgColorsArr[i].color;
+          event.borderColor = bgColorsArr[i].color;
+        }
+      } else if (event.repertoire === 'Ateliers') {
+        if (bgColorsArr[i].name.indexOf('Ateliers') === 0) {
+          event.backgroundColor = bgColorsArr[i].color;
+          event.borderColor = bgColorsArr[i].color;
+        }
+      } else if (event.repertoire === 'Expositions') {
+        if (bgColorsArr[i].name.indexOf('Expositions') === 0) {
+          event.backgroundColor = bgColorsArr[i].color;
+          event.borderColor = bgColorsArr[i].color;
+        }
+      } else if (event.repertoire === 'Évènements') {
+        if (bgColorsArr[i].name.indexOf('Évènements') === 0) {
+          event.backgroundColor = bgColorsArr[i].color;
+          event.borderColor = bgColorsArr[i].color;
+        }
+      }
     }
 
     return event;
