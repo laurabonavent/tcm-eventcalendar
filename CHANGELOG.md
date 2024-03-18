@@ -1,5 +1,11 @@
 # @finsweet/developer-starter
 
+## 1.9.3
+
+### Patch Changes
+
+- 95bca22: 100e
+
 ## 1.9.2
 
 ### Patch Changes
