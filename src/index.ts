@@ -293,6 +293,11 @@ const getEvents = (): Event[] => {
           event.backgroundColor = bgColorsArr[i].color;
           event.borderColor = bgColorsArr[i].color;
         }
+      } else if (event.repertoire === '100e') {
+        if (bgColorsArr[i].name.indexOf('100e') === 0) {
+          event.backgroundColor = bgColorsArr[i].color;
+          event.borderColor = bgColorsArr[i].color;
+        }
       }
     }
 
